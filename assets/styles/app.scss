@@ -1,0 +1,43 @@
+@import "_theme.scss";
+
+body {
+    height: 100vh;
+}
+
+.bg-linear {
+    background: linear-gradient($linear);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-linear-blur {
+    background: linear-gradient($linear-blur);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.title-under {
+    -webkit-text-stroke: 10px $tertiary;
+    font-family: $font-title;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.title-upper {
+    font-family: $font-title;
+    font-size: calc(1.375rem + 1.5vw);
+    font-size: 2.5rem;
+    color: $light;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-5px);
+}
+
+p {
+    color: $tertiary;
+    font-size: 1rem;
+    font-weight: 600;
+}

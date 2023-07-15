@@ -12,14 +12,15 @@ $green-light: #9ed791;
 $sugar: #f2cdac;
 $brown: #b46220;
 $red: #cd3135;
-$linear: linear-gradient(0deg, rgba(172, 224, 249, 1) 45%, rgba(255, 215, 198, 1) 55%);
-$linear-blur: linear-gradient(0deg, rgba(255, 215, 198, 1) 0%, rgba(172, 224, 249, 1) 100%);
+$linear: 180deg, rgba(172, 224, 249, 1) 45%, rgba(255, 215, 198, 1) 55%;
+$linear-blur: 0deg, rgba(255, 215, 198, 1) 0%, rgba(172, 224, 249, 1) 100%;
 
 /** 
 * POLICE
 **/
 $font-base: "Quicksand", sans-serif;
 $font-title: "Sugar-Pie", sans-serif;
+$font-family-base: $font-base;
 
 /** 
 * FONT-SIZE
