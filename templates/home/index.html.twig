@@ -1,0 +1,22 @@
+{% extends 'visitor.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Accueil
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+{% block body %}
+	<main class="container-fluid">
+		<div class="position-relative">
+			<h1 class="title-under">Titre</h1>
+			<span class="title-upper">Titre</span>
+		</div>
+	</main>
+{% endblock %}
+
+{% block footer %}{% endblock %}
