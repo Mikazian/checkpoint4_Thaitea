@@ -1,7 +1,6 @@
 @import "_theme.scss";
 
 body {
-    height: 100vh;
     padding-top: $nav-height;
     padding-bottom: $footer-height;
 }
@@ -28,22 +27,46 @@ body {
     box-shadow: $shadow-top;
 }
 
-.title-under {
-    -webkit-text-stroke: 10px $tertiary;
+/** 
+* TITLE CARD
+**/
+
+@mixin text-stroke-title($color) {
+    -webkit-text-stroke: 10px $color;
     font-family: $font-title;
+    // font-size: clamp(32px, 7vw, 64px);
     font-size: 2.5rem;
     margin: 0;
+    width: 47vw;
+}
+
+.title-under.card1 {
+    @include text-stroke-title($milk);
+}
+
+.title-under.card2 {
+    @include text-stroke-title($green);
+}
+
+.title-under.card3 {
+    @include text-stroke-title($brown);
+}
+
+.title-under.card4 {
+    @include text-stroke-title($red);
 }
 
 .title-upper {
     font-family: $font-title;
-    font-size: calc(1.375rem + 1.5vw);
+    // font-size: calc(1.375rem + 1.5vw);
+    // font-size: clamp(32px, 7vw, 64px);
     font-size: 2.5rem;
     color: $light;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 4px;
+    right: 0;
     transform: translateY(-5px);
+    line-height: 1.2;
 }
 
 /** 
@@ -84,4 +107,14 @@ p {
 
 footer {
     height: 50px;
+}
+
+@media screen and (min-width: 768px) {
+    .title-under.card2 {
+        width: 23vw;
+    }
+
+    .title-under.card3 {
+        width: 23vw;
+    }
 }
