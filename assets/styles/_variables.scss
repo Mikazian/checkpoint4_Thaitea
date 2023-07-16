@@ -1,0 +1,42 @@
+/** 
+* COLOR
+**/
+$primary: #ace0f9;
+$secondary: #ff9900;
+$tertiary: #390075;
+$dark: #0d1b1d;
+$light: #f4f4f4;
+$milk: #ffe0a0;
+$green: #61b65e;
+$green-light: #9ed791;
+$sugar: #f2cdac;
+$brown: #b46220;
+$red: #cd3135;
+$linear: 180deg, rgba(172, 224, 249, 1) 45%, rgba(255, 215, 198, 1) 55%;
+$linear-blur: 0deg, rgba(255, 215, 198, 1) 0%, rgba(172, 224, 249, 1) 100%;
+
+/** 
+* POLICE
+**/
+$font-base: "Quicksand", sans-serif;
+$font-title: "Sugar-Pie", sans-serif;
+$font-family-base: $font-base;
+
+/** 
+* FONT-SIZE
+**/
+$fs-7: 0.875rem; /* 14px */
+$fs-8: 0.75rem; /* 12px */
+$fs-9: 0.625rem; /* 10px */
+
+/** 
+* SHADDOW
+**/
+$shadow-top: 0 -2px 5px rgba(0, 0, 0, 0.1);
+$shadow-bottom: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+/** 
+* HEIGHT
+**/
+$nav-height: 70px;
+$footer-height: 50px;

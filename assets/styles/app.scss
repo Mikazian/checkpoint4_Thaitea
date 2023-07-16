@@ -1,0 +1,87 @@
+@import "_theme.scss";
+
+body {
+    height: 100vh;
+    padding-top: $nav-height;
+    padding-bottom: $footer-height;
+}
+
+.bg-linear {
+    background: linear-gradient($linear);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-linear-blur {
+    background: linear-gradient($linear-blur);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.shadow-bottom {
+    box-shadow: $shadow-bottom;
+}
+
+.shadow-top {
+    box-shadow: $shadow-top;
+}
+
+.title-under {
+    -webkit-text-stroke: 10px $tertiary;
+    font-family: $font-title;
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.title-upper {
+    font-family: $font-title;
+    font-size: calc(1.375rem + 1.5vw);
+    font-size: 2.5rem;
+    color: $light;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-5px);
+}
+
+/** 
+* TEXT
+**/
+
+.fs-7 {
+    font-size: $fs-7;
+}
+
+.fs-8 {
+    font-size: $fs-8;
+}
+
+.fs-9 {
+    font-size: $fs-9;
+}
+
+p {
+    color: $tertiary;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/** 
+* NAVBAR
+**/
+
+.icon-bbt {
+    width: 30px;
+    color: $tertiary;
+}
+
+/** 
+* FOOTER
+**/
+
+footer {
+    height: 50px;
+}

@@ -1,0 +1,36 @@
+// @import "../node_modules/bootstrap/scss/bootstrap";
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+
+// @import "../node_modules/bootstrap/scss/bootstrap";
+
+// Option B: Include parts of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+
+@import "~bootstrap/scss/functions";
+
+@import "_fonts.scss";
+
+@import "_variables.scss";
+
+@import "~bootstrap/scss/variables";
+
+$custom-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "tertiary": $tertiary,
+    "dark": $dark,
+    "light": $light,
+    "milk": $milk,
+    "green": $green,
+    "green-light": $green-light,
+    "sugar": $sugar,
+    "brown": $brown,
+    "red": $red,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "~bootstrap/scss/bootstrap";
