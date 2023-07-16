@@ -3,6 +3,8 @@
 	{{ parent() }}
 {% endblock %}
 {% block navbar %}
-	{% include '/components/_navbar.html.twig' %}
+	{% include 'components/_navbar.html.twig' %}
 {% endblock %}
-{% block footer %}{% endblock %}
+{% block footer %}
+	{% include 'components/_footer.html.twig' %}
+{% endblock %}

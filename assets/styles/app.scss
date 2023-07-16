@@ -3,6 +3,7 @@
 body {
     height: 100vh;
     padding-top: $nav-height;
+    padding-bottom: $footer-height;
 }
 
 .bg-linear {
@@ -45,10 +46,27 @@ body {
     transform: translateY(-5px);
 }
 
+/** 
+* TEXT
+**/
+
+.fs-7 {
+    font-size: $fs-7;
+}
+
+.fs-8 {
+    font-size: $fs-8;
+}
+
+.fs-9 {
+    font-size: $fs-9;
+}
+
 p {
     color: $tertiary;
     font-size: 1rem;
     font-weight: 600;
+    margin: 0;
 }
 
 /** 
@@ -58,4 +76,12 @@ p {
 .icon-bbt {
     width: 30px;
     color: $tertiary;
+}
+
+/** 
+* FOOTER
+**/
+
+footer {
+    height: 50px;
 }
