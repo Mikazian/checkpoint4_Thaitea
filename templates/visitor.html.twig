@@ -2,5 +2,7 @@
 {% block stylesheets %}
 	{{ parent() }}
 {% endblock %}
-{% block navbar %}{% endblock %}
+{% block navbar %}
+	{% include '/components/_navbar.html.twig' %}
+{% endblock %}
 {% block footer %}{% endblock %}

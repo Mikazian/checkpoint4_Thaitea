@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg bg-light shadow-bottom fixed-top">
+	<div class="container-fluid">
+		<ul class="d-flex flex-fill justify-content-between list-unstyled m-0 text-tertiary">
+			<li class="nav-item ">
+				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="#">
+					{% include 'components/svg/_icon_home.svg.twig' %}
+					Accueil
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="#">
+					<span class="icon-bbt">
+						{% include 'components/svg/_icon_bbt.svg.twig' %}
+					</span>
+					Catégories
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="#">
+					{% include 'components/svg/_icon_shop.svg.twig' %}
+					Panier
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="#">
+					{% include 'components/svg/_icon_profile.svg.twig' %}
+					Compte
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
