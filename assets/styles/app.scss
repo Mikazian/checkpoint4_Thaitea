@@ -2,6 +2,7 @@
 
 body {
     height: 100vh;
+    padding-top: $nav-height;
 }
 
 .bg-linear {
@@ -16,6 +17,14 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+.shadow-bottom {
+    box-shadow: $shadow-bottom;
+}
+
+.shadow-top {
+    box-shadow: $shadow-top;
 }
 
 .title-under {
@@ -40,4 +49,13 @@ p {
     color: $tertiary;
     font-size: 1rem;
     font-weight: 600;
+}
+
+/** 
+* NAVBAR
+**/
+
+.icon-bbt {
+    width: 30px;
+    color: $tertiary;
 }
