@@ -16,10 +16,6 @@ class Liquid
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'liquid_id')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Beverage $beverage = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -33,18 +29,6 @@ class Liquid
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getBeverage(): ?Beverage
-    {
-        return $this->beverage;
-    }
-
-    public function setBeverage(?Beverage $beverage): static
-    {
-        $this->beverage = $beverage;
 
         return $this;
     }
