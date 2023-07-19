@@ -31,6 +31,23 @@ class Beverage
     #[ORM\JoinColumn(nullable: false)]
     private ?user $creator = null;
 
+    #[ORM\ManyToOne(inversedBy: 'beverages')]
+    private ?liquid $liquid = null;
+
+    #[ORM\ManyToOne(inversedBy: 'beverages')]
+    private ?aroma $aroma = null;
+
+    #[ORM\ManyToOne(inversedBy: 'beverages')]
+    private ?bubble $bubble = null;
+
+    #[ORM\ManyToMany(targetEntity: ingredient::class, inversedBy: 'beverages')]
+    private Collection $ingredient;
+
+    public function __construct()
+    {
+        $this->ingredient = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -92,6 +109,66 @@ class Beverage
     public function setCreatorId(?user $creator): static
     {
         $this->creator = $creator;
+
+        return $this;
+    }
+
+    public function getLiquid(): ?liquid
+    {
+        return $this->liquid;
+    }
+
+    public function setLiquid(?liquid $liquid): static
+    {
+        $this->liquid = $liquid;
+
+        return $this;
+    }
+
+    public function getAroma(): ?aroma
+    {
+        return $this->aroma;
+    }
+
+    public function setAroma(?aroma $aroma): static
+    {
+        $this->aroma = $aroma;
+
+        return $this;
+    }
+
+    public function getBubble(): ?bubble
+    {
+        return $this->bubble;
+    }
+
+    public function setBubble(?bubble $bubble): static
+    {
+        $this->bubble = $bubble;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ingredient>
+     */
+    public function getIngredient(): Collection
+    {
+        return $this->ingredient;
+    }
+
+    public function addIngredient(ingredient $ingredient): static
+    {
+        if (!$this->ingredient->contains($ingredient)) {
+            $this->ingredient->add($ingredient);
+        }
+
+        return $this;
+    }
+
+    public function removeIngredient(ingredient $ingredient): static
+    {
+        $this->ingredient->removeElement($ingredient);
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\IngredientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: IngredientRepository::class)]
@@ -15,6 +17,14 @@ class Ingredient
 
     #[ORM\Column(length: 100)]
     private ?string $name = null;
+
+    #[ORM\ManyToMany(targetEntity: Beverage::class, mappedBy: 'ingredient')]
+    private Collection $beverages;
+
+    public function __construct()
+    {
+        $this->beverages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -29,6 +39,33 @@ class Ingredient
     public function setName(string $name): static
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Beverage>
+     */
+    public function getBeverages(): Collection
+    {
+        return $this->beverages;
+    }
+
+    public function addBeverage(Beverage $beverage): static
+    {
+        if (!$this->beverages->contains($beverage)) {
+            $this->beverages->add($beverage);
+            $beverage->addIngredient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBeverage(Beverage $beverage): static
+    {
+        if ($this->beverages->removeElement($beverage)) {
+            $beverage->removeIngredient($this);
+        }
 
         return $this;
     }
