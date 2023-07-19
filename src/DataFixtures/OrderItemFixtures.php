@@ -16,10 +16,12 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create('fr_FR');
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $orderItem = new OrderItem();
-            $volumeKeys = array_keys(SizeFixtures::MULTIPLICATOR);
-            $volumeKey = $volumeKeys[$i];
+
+            $sizes = array_keys(SizeFixtures::MULTIPLICATOR);
+            $randomSize = $faker->randomElement($sizes);
+            $orderItem->setSize($this->getReference('size_' . $randomSize));
 
             $manager->persist($orderItem);
         }
