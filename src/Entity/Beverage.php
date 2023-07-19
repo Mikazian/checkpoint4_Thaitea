@@ -25,7 +25,7 @@ class Beverage
     private ?string $image = null;
 
     #[ORM\Column(nullable: true)]
-    private ?bool $is_new = null;
+    private ?bool $is_new = false;
 
     #[ORM\ManyToOne(inversedBy: 'beverages')]
     #[ORM\JoinColumn(nullable: false)]
