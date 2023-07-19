@@ -23,7 +23,7 @@ class Size
     private Collection $orderItems;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2)]
-    private ?string $multiplicator = null;
+    private ?float $multiplicator = null;
 
     public function __construct()
     {
@@ -77,12 +77,12 @@ class Size
         return $this;
     }
 
-    public function getMultiplicator(): ?string
+    public function getMultiplicator(): ?float
     {
         return $this->multiplicator;
     }
 
-    public function setMultiplicator(string $multiplicator): static
+    public function setMultiplicator(float $multiplicator): static
     {
         $this->multiplicator = $multiplicator;
 

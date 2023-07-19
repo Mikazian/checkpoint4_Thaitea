@@ -29,16 +29,16 @@ class Beverage
 
     #[ORM\ManyToOne(inversedBy: 'beverages')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $creator = null;
+    private ?User $creator = null;
 
     #[ORM\ManyToOne(inversedBy: 'beverages')]
-    private ?liquid $liquid = null;
+    private ?Liquid $liquid = null;
 
     #[ORM\ManyToOne(inversedBy: 'beverages')]
-    private ?aroma $aroma = null;
+    private ?Aroma $aroma = null;
 
     #[ORM\ManyToOne(inversedBy: 'beverages')]
-    private ?bubble $bubble = null;
+    private ?Bubble $bubble = null;
 
     #[ORM\ManyToMany(targetEntity: ingredient::class, inversedBy: 'beverages')]
     private Collection $ingredient;
