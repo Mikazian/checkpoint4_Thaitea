@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class IngredientFixtures extends Fixture implements DependentFixtureInterface
+class IngredientFixtures extends Fixture
 {
     public const INGREDIENTS = [
         'fruits frais mangues',
@@ -37,35 +37,15 @@ class IngredientFixtures extends Fixture implements DependentFixtureInterface
 
     public function load(ObjectManager $manager): void
     {
-        $faker = Factory::create('fr_FR');
-
-        $beverages = $manager->getRepository(Beverage::class)->findAll();
-
-        foreach ($beverages as $beverage) {
-            $ingredientKey = $faker->randomElement(array_keys(self::INGREDIENTS));
-            $ingredientName = self::INGREDIENTS[$ingredientKey];
-
+        foreach (self::INGREDIENTS as $key => $ingredientName) {
             $ingredient = new Ingredient();
             $ingredient->setName($ingredientName);
-            $ingredient->addBeverage($beverage);
 
-            $referenceName = 'ingredient_' . $ingredientKey;
-            if ($this->hasReference($referenceName)) {
-                $this->setReference($referenceName, $ingredient);
-            } else {
-                $this->addReference($referenceName, $ingredient);
-            }
+            $this->addReference('ingredient_' . $key, $ingredient);
 
             $manager->persist($ingredient);
         }
 
         $manager->flush();
-    }
-
-    public function getDependencies()
-    {
-        return [
-            BeverageFixtures::class,
-        ];
     }
 }

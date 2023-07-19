@@ -8,6 +8,7 @@ use App\DataFixtures\AromaFixtures;
 use App\DataFixtures\BubbleFixtures;
 use App\DataFixtures\LiquidFixtures;
 use Doctrine\Persistence\ObjectManager;
+use App\DataFixtures\IngredientFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
@@ -42,6 +43,10 @@ class BeverageFixtures extends Fixture implements DependentFixtureInterface
             $indexLiquid = $faker->numberBetween(0, $numberLiquids - 1);
             $beverage->setLiquid($this->getReference('liquid_' . $indexLiquid));
 
+            // Ingredient
+            $numberIngredients = count(IngredientFixtures::INGREDIENTS);
+            $indexIngredient = $faker->numberBetween(0, $numberIngredients - 1);
+            $beverage->addIngredient($this->getReference('ingredient_' . $indexIngredient));
 
             $this->addReference('beverage_' . $i, $beverage);
 
@@ -55,7 +60,7 @@ class BeverageFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
-            AromaFixtures::class,
+            IngredientFixtures::class,
         ];
     }
 }
