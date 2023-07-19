@@ -16,12 +16,6 @@ class Size
     #[ORM\Column]
     private ?int $volume = null;
 
-    #[ORM\Column]
-    private ?int $multiplicator = null;
-
-    #[ORM\ManyToOne(inversedBy: 'size_id')]
-    private ?OrderItem $orderItem = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -35,30 +29,6 @@ class Size
     public function setVolume(int $volume): static
     {
         $this->volume = $volume;
-
-        return $this;
-    }
-
-    public function getMultiplicator(): ?int
-    {
-        return $this->multiplicator;
-    }
-
-    public function setMultiplicator(int $multiplicator): static
-    {
-        $this->multiplicator = $multiplicator;
-
-        return $this;
-    }
-
-    public function getOrderItem(): ?OrderItem
-    {
-        return $this->orderItem;
-    }
-
-    public function setOrderItem(?OrderItem $orderItem): static
-    {
-        $this->orderItem = $orderItem;
 
         return $this;
     }

@@ -16,9 +16,6 @@ class Ingredient
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $multiplicator = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -32,18 +29,6 @@ class Ingredient
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getMultiplicator(): ?int
-    {
-        return $this->multiplicator;
-    }
-
-    public function setMultiplicator(int $multiplicator): static
-    {
-        $this->multiplicator = $multiplicator;
 
         return $this;
     }

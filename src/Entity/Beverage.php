@@ -18,17 +18,14 @@ class Beverage
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $price = null;
+    #[ORM\Column(type: 'decimal', precision: 4, scale: 2)]
+    private ?float $price = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
     #[ORM\Column(nullable: true)]
     private ?bool $is_new = null;
-
-    #[ORM\Column(nullable: true)]
-    private ?int $sold = null;
 
     #[ORM\OneToMany(mappedBy: 'beverage', targetEntity: liquid::class)]
     private Collection $liquid_id;
@@ -71,12 +68,12 @@ class Beverage
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }
 
-    public function setPrice(int $price): static
+    public function setPrice(float $price): static
     {
         $this->price = $price;
 
@@ -103,18 +100,6 @@ class Beverage
     public function setIsNew(?bool $is_new): static
     {
         $this->is_new = $is_new;
-
-        return $this;
-    }
-
-    public function getSold(): ?int
-    {
-        return $this->sold;
-    }
-
-    public function setSold(?int $sold): static
-    {
-        $this->sold = $sold;
 
         return $this;
     }
