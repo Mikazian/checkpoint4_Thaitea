@@ -19,6 +19,12 @@ class OrderItem
     #[ORM\JoinColumn(nullable: false)]
     private ?order $order = null;
 
+    #[ORM\ManyToOne(inversedBy: 'orderItems')]
+    private ?beverage $beverage = null;
+
+    #[ORM\ManyToOne(inversedBy: 'orderItems')]
+    private ?size $size = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -32,6 +38,30 @@ class OrderItem
     public function setOrderId(?Order $order): static
     {
         $this->order = $order;
+
+        return $this;
+    }
+
+    public function getBeverage(): ?beverage
+    {
+        return $this->beverage;
+    }
+
+    public function setBeverage(?beverage $beverage): static
+    {
+        $this->beverage = $beverage;
+
+        return $this;
+    }
+
+    public function getSize(): ?size
+    {
+        return $this->size;
+    }
+
+    public function setSize(?size $size): static
+    {
+        $this->size = $size;
 
         return $this;
     }

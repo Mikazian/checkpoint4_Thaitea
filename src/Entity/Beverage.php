@@ -43,9 +43,13 @@ class Beverage
     #[ORM\ManyToMany(targetEntity: ingredient::class, inversedBy: 'beverages')]
     private Collection $ingredient;
 
+    #[ORM\OneToMany(mappedBy: 'beverage', targetEntity: OrderItem::class)]
+    private Collection $orderItems;
+
     public function __construct()
     {
         $this->ingredient = new ArrayCollection();
+        $this->orderItems = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -169,6 +173,36 @@ class Beverage
     public function removeIngredient(ingredient $ingredient): static
     {
         $this->ingredient->removeElement($ingredient);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, OrderItem>
+     */
+    public function getOrderItems(): Collection
+    {
+        return $this->orderItems;
+    }
+
+    public function addOrderItem(OrderItem $orderItem): static
+    {
+        if (!$this->orderItems->contains($orderItem)) {
+            $this->orderItems->add($orderItem);
+            $orderItem->setBeverage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderItem(OrderItem $orderItem): static
+    {
+        if ($this->orderItems->removeElement($orderItem)) {
+            // set the owning side to null (unless already changed)
+            if ($orderItem->getBeverage() === $this) {
+                $orderItem->setBeverage(null);
+            }
+        }
 
         return $this;
     }
