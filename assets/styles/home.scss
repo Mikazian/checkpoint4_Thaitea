@@ -1,1 +1,102 @@
 @import "_variables.scss";
+
+/** 
+* HEADER
+**/
+
+header {
+    height: 60vw;
+}
+
+.cloud-1 {
+    position: absolute;
+    z-index: $first-plan;
+    width: 40vw;
+    left: 0;
+    top: 0;
+}
+
+.cloud-2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: $first-plan;
+    width: 60vw;
+}
+
+.cloud-3 {
+    position: absolute;
+    bottom: 25%;
+    width: 100vw;
+    z-index: $third-plan;
+    opacity: 0.6;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    z-index: $second-plan;
+}
+
+.sky-1 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50vw;
+}
+.sky-2 {
+    position: absolute;
+    right: 20%;
+    top: 23%;
+    width: 25vw;
+}
+
+.title-header {
+    position: absolute;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    z-index: $first-plan;
+    width: clamp(270px, 75vw, 550px);
+}
+
+.custom-title-header {
+    font-size: clamp(24px, 5vw, 45px);
+}
+
+/** 
+* CARD
+**/
+
+.category-card {
+    display: block;
+    height: auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: $shadow-bottom;
+}
+
+.position-category-title {
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: $first-plan;
+}
+
+.custom-template {
+    position: relative;
+    z-index: $second-plan;
+}
+
+.custom-size-img {
+    height: 100%;
+    width: 47vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: $third-plan;
+}

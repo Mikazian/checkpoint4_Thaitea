@@ -11,11 +11,110 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container-fluid">
-		<div class="position-relative">
-			<h1 class="title-under">Titre</h1>
-			<span class="title-upper">Titre</span>
+	<header class="d-flex align-items-end justify-content-center position-relative">
+		<div class="cloud-1">
+			{% include 'components/svg/_img_cloud-1.svg.twig' %}
 		</div>
+		<div class="cloud-2">
+			{% include 'components/svg/_img_cloud-2.svg.twig' %}
+		</div>
+		<div class="logo">
+			{% include 'components/svg/_icon_logo.svg.twig' %}
+		</div>
+		<div class="cloud-3">
+			{% include 'components/svg/_img_cloud-3.svg.twig' %}
+		</div>
+		<div class="sky-1">
+			{% include 'components/svg/_img_sky-1.svg.twig' %}
+		</div>
+		<div class="sky-2">
+			{% include 'components/svg/_img_sky-2.svg.twig' %}
+		</div>
+		<div class="title-header">
+			<h1 class="text-uppercase text-tertiary fw-bold text-center custom-title-header">La boisson qui vous élève au 7e ciel !</h1>
+		</div>
+	</header>
+
+	<main class="container-fluid container-lg">
+		<section class="mt-3">
+			<h2 class="text-tertiary fw-bold fs-3">Les plus populaires</h2>
+			<div>
+				{# TODO ajouter les plus populaires #}
+			</div>
+		</section>
+
+		<section class="mt-3">
+			<h2 class="text-tertiary fw-bold fs-3">Les nouveautés</h2>
+			<div>
+				{# TODO ajouter les plus nouveautés #}
+			</div>
+		</section>
+
+		<section class="mt-3 mb-5" id="categories">
+			<h2 class="text-tertiary fw-bold fs-3">Catégories</h2>
+			<div class="row row-cols-1 row-cols-md-2 row-gap-4 mt-3">
+				<div class="col">
+					<a href="#" class="category-card position-relative">
+						<span class="position-category-title">
+							<h3 class="title-under card1 text-end">Milk Tea</h3>
+							<span class="title-upper text-end">Milk Tea</span>
+						</span>
+						<span class="custom-template">
+							<img class="img-fluid object-fit-cover w-100 h-100" src="{{ asset('build/images/card/card-milk-tea.png') }}" alt="template carte">
+						</span>
+						<span class="custom-size-img">
+							<img class="img-fluid object-fit-cover h-100" src="{{ asset('build/images/card/coco-milk.webp') }}" alt="image bubble tea">
+						</span>
+					</a>
+				</div>
+				<div class="col">
+					<a href="#" class="category-card position-relative">
+						<span class="position-category-title">
+							<h3 class="title-under card2 text-end">Matcha Tea</h3>
+							<span class="title-upper text-end">Matcha Tea</span>
+						</span>
+						<span class="custom-template">
+							<img class="img-fluid object-fit-cover w-100 h-100" src="{{ asset('build/images/card/card-green-tea.png') }}" alt="template carte">
+						</span>
+						<span class="custom-size-img">
+							<img class="img-fluid object-fit-cover h-100" src="{{ asset('build/images/card/matcha-tea.webp') }}" alt="image bubble tea">
+						</span>
+					</a>
+				</div>
+				<div class="col">
+					<a href="#" class="category-card position-relative">
+						<span class="position-category-title">
+							<h3 class="title-under card3 text-end">Sugar Brown</h3>
+							<span class="title-upper text-end">Sugar Brown</span>
+						</span>
+						<span class="custom-template">
+							<img class="img-fluid object-fit-cover w-100 h-100" src="{{ asset('build/images/card/card-suggar-brown.png') }}" alt="template carte">
+						</span>
+						<span class="custom-size-img">
+							<img class="img-fluid object-fit-cover h-100" src="{{ asset('build/images/card/sugar-brown.webp') }}" alt="image bubble tea">
+						</span>
+					</a>
+				</div>
+
+				<div class="col">
+					<a href="#" class="category-card position-relative">
+						<span class="position-category-title">
+							<h3 class="title-under card4 text-end">Fruit Tea</h3>
+							<span class="title-upper text-end">Fruit Tea</span>
+						</span>
+						<span class="custom-template">
+							<img class="img-fluid object-fit-cover w-100 h-100" src="{{ asset('build/images/card/card-fruit-tea.png') }}" alt="template carte">
+						</span>
+						<span class="custom-size-img">
+							<img class="img-fluid object-fit-cover h-100" src="{{ asset('build/images/card/fruit-tea.webp') }}" alt="image bubble tea">
+						</span>
+					</a>
+				</div>
+
+			</div>
+
+		</section>
+
 	</main>
 {% endblock %}
 
