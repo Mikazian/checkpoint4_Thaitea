@@ -24,10 +24,10 @@ class Order
     private ?\DateTimeInterface $date = null;
 
     #[ORM\Column]
-    private ?bool $is_selling = null;
+    private ?bool $is_selling = false;
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?User $client = null;
 
     #[ORM\OneToMany(mappedBy: 'order_id', targetEntity: OrderItem::class)]
