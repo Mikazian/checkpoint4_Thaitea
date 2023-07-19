@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\IngredientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: IngredientRepository::class)]
@@ -16,8 +18,13 @@ class Ingredient
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $multiplicator = null;
+    #[ORM\ManyToMany(targetEntity: Beverage::class, mappedBy: 'ingredient')]
+    private Collection $beverages;
+
+    public function __construct()
+    {
+        $this->beverages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -36,14 +43,29 @@ class Ingredient
         return $this;
     }
 
-    public function getMultiplicator(): ?int
+    /**
+     * @return Collection<int, Beverage>
+     */
+    public function getBeverages(): Collection
     {
-        return $this->multiplicator;
+        return $this->beverages;
     }
 
-    public function setMultiplicator(int $multiplicator): static
+    public function addBeverage(Beverage $beverage): static
     {
-        $this->multiplicator = $multiplicator;
+        if (!$this->beverages->contains($beverage)) {
+            $this->beverages->add($beverage);
+            $beverage->addIngredient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBeverage(Beverage $beverage): static
+    {
+        if ($this->beverages->removeElement($beverage)) {
+            $beverage->removeIngredient($this);
+        }
 
         return $this;
     }

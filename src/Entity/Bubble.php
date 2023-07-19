@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BubbleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BubbleRepository::class)]
@@ -16,12 +18,13 @@ class Bubble
     #[ORM\Column(length: 100)]
     private ?string $name = null;
 
-    #[ORM\Column]
-    private ?int $multiplicator = null;
+    #[ORM\OneToMany(mappedBy: 'bubble', targetEntity: Beverage::class)]
+    private Collection $beverages;
 
-    #[ORM\ManyToOne(inversedBy: 'bubble_id')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Beverage $beverage = null;
+    public function __construct()
+    {
+        $this->beverages = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -40,26 +43,32 @@ class Bubble
         return $this;
     }
 
-    public function getMultiplicator(): ?int
+    /**
+     * @return Collection<int, Beverage>
+     */
+    public function getBeverages(): Collection
     {
-        return $this->multiplicator;
+        return $this->beverages;
     }
 
-    public function setMultiplicator(int $multiplicator): static
+    public function addBeverage(Beverage $beverage): static
     {
-        $this->multiplicator = $multiplicator;
+        if (!$this->beverages->contains($beverage)) {
+            $this->beverages->add($beverage);
+            $beverage->setBubble($this);
+        }
 
         return $this;
     }
 
-    public function getBeverage(): ?Beverage
+    public function removeBeverage(Beverage $beverage): static
     {
-        return $this->beverage;
-    }
-
-    public function setBeverage(?Beverage $beverage): static
-    {
-        $this->beverage = $beverage;
+        if ($this->beverages->removeElement($beverage)) {
+            // set the owning side to null (unless already changed)
+            if ($beverage->getBubble() === $this) {
+                $beverage->setBubble(null);
+            }
+        }
 
         return $this;
     }

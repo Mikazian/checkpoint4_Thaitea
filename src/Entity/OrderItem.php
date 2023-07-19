@@ -15,95 +15,53 @@ class OrderItem
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'orderItem', targetEntity: beverage::class)]
-    private Collection $beverage_id;
-
-    #[ORM\OneToMany(mappedBy: 'orderItem', targetEntity: size::class)]
-    private Collection $size_id;
-
     #[ORM\ManyToOne(inversedBy: 'orderItems')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?order $order_id = null;
+    private ?order $order = null;
 
-    public function __construct()
-    {
-        $this->beverage_id = new ArrayCollection();
-        $this->size_id = new ArrayCollection();
-    }
+    #[ORM\ManyToOne(inversedBy: 'orderItems')]
+    private ?beverage $beverage = null;
+
+    #[ORM\ManyToOne(inversedBy: 'orderItems')]
+    private ?size $size = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * @return Collection<int, beverage>
-     */
-    public function getBeverageId(): Collection
-    {
-        return $this->beverage_id;
-    }
-
-    public function addBeverageId(beverage $beverageId): static
-    {
-        if (!$this->beverage_id->contains($beverageId)) {
-            $this->beverage_id->add($beverageId);
-            $beverageId->setOrderItem($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBeverageId(beverage $beverageId): static
-    {
-        if ($this->beverage_id->removeElement($beverageId)) {
-            // set the owning side to null (unless already changed)
-            if ($beverageId->getOrderItem() === $this) {
-                $beverageId->setOrderItem(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, size>
-     */
-    public function getSizeId(): Collection
-    {
-        return $this->size_id;
-    }
-
-    public function addSizeId(size $sizeId): static
-    {
-        if (!$this->size_id->contains($sizeId)) {
-            $this->size_id->add($sizeId);
-            $sizeId->setOrderItem($this);
-        }
-
-        return $this;
-    }
-
-    public function removeSizeId(size $sizeId): static
-    {
-        if ($this->size_id->removeElement($sizeId)) {
-            // set the owning side to null (unless already changed)
-            if ($sizeId->getOrderItem() === $this) {
-                $sizeId->setOrderItem(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getOrderId(): ?order
     {
-        return $this->order_id;
+        return $this->order;
     }
 
-    public function setOrderId(?order $order_id): static
+    public function setOrderId(?Order $order): static
     {
-        $this->order_id = $order_id;
+        $this->order = $order;
+
+        return $this;
+    }
+
+    public function getBeverage(): ?beverage
+    {
+        return $this->beverage;
+    }
+
+    public function setBeverage(?beverage $beverage): static
+    {
+        $this->beverage = $beverage;
+
+        return $this;
+    }
+
+    public function getSize(): ?size
+    {
+        return $this->size;
+    }
+
+    public function setSize(?size $size): static
+    {
+        $this->size = $size;
 
         return $this;
     }
