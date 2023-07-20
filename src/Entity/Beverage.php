@@ -27,7 +27,7 @@ class Beverage
     #[ORM\Column(nullable: true)]
     private ?bool $is_new = false;
 
-    #[ORM\ManyToOne(inversedBy: 'beverages')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'beverages')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $creator = null;
 
@@ -105,12 +105,12 @@ class Beverage
         return $this;
     }
 
-    public function getCreatorId(): ?user
+    public function getCreator(): ?user
     {
         return $this->creator;
     }
 
-    public function setCreatorId(?user $creator): static
+    public function setCreator(?user $creator): static
     {
         $this->creator = $creator;
 

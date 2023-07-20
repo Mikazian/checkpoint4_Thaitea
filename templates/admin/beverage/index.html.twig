@@ -15,13 +15,15 @@
 			<span class="icon-btn">
 				{% include 'components/svg/_icon_add.svg.twig' %}
 			</span>
-			Ajouter un nouveau Bubble Tea</a>
+			Ajouter un nouveau Bubble Tea
+		</a>
 	</div>
 
 	<div class="table-responsive">
 		<table class="table table-primary table-striped table-hover">
 			<thead class="sticky-top">
 				<tr>
+					<th class="col bg-primary text-tertiary align-middle"></th>
 					<th class="col bg-primary text-tertiary align-middle">Nom du Bubble Tea</th>
 					<th class="col bg-primary text-tertiary align-middle">Liquide</th>
 					<th class="col bg-primary text-tertiary align-middle">Arôme</th>
@@ -33,6 +35,9 @@
 			<tbody>
 				{% for beverage in beverages %}
 					<tr>
+						<td class="col text-tertiary align-middle">
+							<div class="table-img"></div>
+						</td>
 						<td class="col text-tertiary align-middle">
 							<a class="text-tertiary text-decoration-none" href="{{ path('app_admin_beverage_show', { id : beverage.id })}}">
 								<span class='icon-btn pe-2'>

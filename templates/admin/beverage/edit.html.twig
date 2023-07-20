@@ -1,13 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block title %}Edit Beverage{% endblock %}
+{% block title %}
+	{{ parent() }}
+	| Admin - Édition du Bubble Tea
+{% endblock %}
 
-{% block body %}
-    <h1>Edit Beverage</h1>
+{% block admin_content_title %}
+	Modifier le Bubble Tea
+{% endblock %}
 
-    {{ include('admin_beverage/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_admin_beverage_index') }}">back to list</a>
-
-    {{ include('admin_beverage/_delete_form.html.twig') }}
+{% block admin_content %}
+	<div class="mt-3">
+		{{ include('admin/beverage/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+	</div>
 {% endblock %}
