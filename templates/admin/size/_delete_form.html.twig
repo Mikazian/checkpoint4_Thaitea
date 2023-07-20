@@ -1,0 +1,9 @@
+<form method="post" action="{{ path('app_admin_size_delete', {'id': size.id }) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer {{ size.volume }} ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ size.id) }}">
+	<button class="bg-transparent border-0">
+		<a class="icon-link link-tertiary text-decoration-none">
+			{{ include('/components/svg/_icon_trash.svg.twig') }}
+			Supprimer
+		</a>
+	</button>
+</form>
