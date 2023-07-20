@@ -2,12 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\BeverageRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use DateTime;
+use DateTimeInterface;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\BeverageRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BeverageRepository::class)]
+#[Vich\Uploadable]
 class Beverage
 {
     #[ORM\Id]
@@ -24,10 +31,20 @@ class Beverage
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'image')]
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DatetimeInterface $updatedAt = null;
+
     #[ORM\Column(nullable: true)]
     private ?bool $is_new = false;
 
-    #[ORM\ManyToOne(inversedBy: 'beverages')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'beverages')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $creator = null;
 
@@ -40,7 +57,7 @@ class Beverage
     #[ORM\ManyToOne(inversedBy: 'beverages')]
     private ?Bubble $bubble = null;
 
-    #[ORM\ManyToMany(targetEntity: ingredient::class, inversedBy: 'beverages')]
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'beverages')]
     private Collection $ingredient;
 
     #[ORM\OneToMany(mappedBy: 'beverage', targetEntity: OrderItem::class)]
@@ -93,6 +110,26 @@ class Beverage
         return $this;
     }
 
+    /**
+     * Get the value of updatedAt
+     */
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @return  self
+     */
+    public function setUpdatedAt(DateTime $updatedAt): Beverage
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
     public function isIsNew(): ?bool
     {
         return $this->is_new;
@@ -105,12 +142,12 @@ class Beverage
         return $this;
     }
 
-    public function getCreatorId(): ?user
+    public function getCreator(): ?user
     {
         return $this->creator;
     }
 
-    public function setCreatorId(?user $creator): static
+    public function setCreator(?user $creator): static
     {
         $this->creator = $creator;
 
@@ -202,6 +239,29 @@ class Beverage
             if ($orderItem->getBeverage() === $this) {
                 $orderItem->setBeverage(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of imageFile
+     */
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+    /**
+     * Set the value of imageFile
+     *
+     * @return  self
+     */
+    public function setImageFile(File $image)
+    {
+        $this->imageFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
         }
 
         return $this;

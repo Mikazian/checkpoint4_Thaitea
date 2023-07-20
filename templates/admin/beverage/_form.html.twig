@@ -1,0 +1,59 @@
+{{ form_start(form) }}
+<div class="d-flex gap-4 mb-4">
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.name) }}
+		{{ form_widget(form.name) }}
+		{{ form_errors(form.name) }}
+	</div>
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.price) }}
+		{{ form_widget(form.price) }}
+		{{ form_errors(form.price) }}
+	</div>
+</div>
+<div class="d-flex flex-column w-50">
+	{{ form_label(form.creator) }}
+	{{ form_widget(form.creator) }}
+	{{ form_errors(form.creator) }}
+</div>
+<h3 class="fs-4 fw-bolder text-tertiary mt-4">Composition</h2>
+<div class="d-flex gap-4 mb-4">
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.liquid) }}
+		{{ form_widget(form.liquid) }}
+		{{ form_errors(form.liquid) }}
+	</div>
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.aroma) }}
+		{{ form_widget(form.aroma) }}
+		{{ form_errors(form.aroma) }}
+	</div>
+</div>
+<div class="d-flex gap-4 mb-4">
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.bubble) }}
+		{{ form_widget(form.bubble) }}
+		{{ form_errors(form.bubble) }}
+	</div>
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.ingredient) }}
+		{{ form_widget(form.ingredient) }}
+		{{ form_errors(form.ingredient) }}
+	</div>
+</div>
+<div class="d-flex gap-2 mb-4">
+	{{ form_widget(form.is_new) }}
+	{{ form_label(form.is_new) }}
+	{{ form_errors(form.is_new) }}
+</div>
+<div class="d-flex gap-2">
+	{{ form_widget(form.imageFile) }}
+	{{ form_label(form.imageFile) }}
+	{{ form_label(form.imageFile) }}
+	{{ form_errors(form.imageFile) }}
+</div>
+<div class="d-flex justify-content-between mt-5 mb-2">
+	<a href="{{ path('app_admin_beverage_index') }}" class="btn btn-outline-primary border-2 rounded-pill text-tertiary fw-bolder">Retour vers la liste</a>
+	<button class="btn btn-primary rounded-pill text-tertiary fw-bolder">{{ button_label|default('Sauvegarder') }}</button>
+</div>
+{{ form_end(form) }}

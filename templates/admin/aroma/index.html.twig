@@ -29,7 +29,7 @@
 				{% for aroma in aromas %}
 					<tr>
 						<td class="col-9 text-tertiary align-middle">{{ aroma.name|capitalize }}</td>
-						<td class="text-center">
+						<td class="text-center align-middle">
 							<div class="d-flex justify-content-md-center flex-nowrap gap-3">
 								<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_aroma_edit', {'id': aroma.id }) }}">
 									{{ include('/components/svg/_icon_edit.svg.twig') }}

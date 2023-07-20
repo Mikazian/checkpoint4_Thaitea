@@ -1,0 +1,79 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Admin - Bubble Tea
+{% endblock %}
+
+{% block admin_content_title %}
+	Gestion des Bubbles Tea
+{% endblock %}
+
+{% block admin_content %}
+	<div class="my-3">
+		<a href="{{ path('app_admin_beverage_new') }}" class="btn btn-primary rounded-pill text-tertiary fw-bolder">
+			<span class="icon-btn">
+				{% include 'components/svg/_icon_add.svg.twig' %}
+			</span>
+			Ajouter un nouveau Bubble Tea
+		</a>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-primary table-striped table-hover">
+			<thead class="sticky-top">
+				<tr>
+					<th class="col bg-primary text-tertiary align-middle"></th>
+					<th class="col bg-primary text-tertiary align-middle">Nom du Bubble Tea</th>
+					<th class="col bg-primary text-tertiary align-middle">Liquide</th>
+					<th class="col bg-primary text-tertiary align-middle">Arôme</th>
+					<th class="col bg-primary text-tertiary align-middle">Bubble</th>
+					<th class="col bg-primary text-tertiary align-middle">Ingrédients</th>
+					<th class="col bg-primary text-tertiary align-middle custom-rounded">Prix</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for beverage in beverages %}
+					<tr>
+						<td class="col text-tertiary align-middle">
+							<div class="table-img">
+								<img src="{{ vich_uploader_asset(beverage) }}" class="object-fit-cover border rounded w-100 h-100">
+							</div>
+						</td>
+						<td class="col text-tertiary align-middle">
+							<a class="text-tertiary text-decoration-none" href="{{ path('app_admin_beverage_show', { id : beverage.id })}}">
+								<span class='icon-btn pe-2'>
+									{{ include('/components/svg/_icon_eye.svg.twig') }}
+								</span>
+								{{ beverage.name|capitalize }}
+							</a>
+						</td>
+						<td class="col text-tertiary align-middle">{{ beverage.liquid.name|capitalize }}</td>
+						<td class="col text-tertiary align-middle">{{ beverage.aroma.name|capitalize }}</td>
+						<td class="col text-tertiary align-middle">{{ beverage.bubble.name|capitalize }}</td>
+						<td class="col text-tertiary align-middle">
+							{% for ingredient in beverage.ingredient %}
+								{{ ingredient.name|capitalize }},
+							{% endfor %}
+						</td>
+						<td class="col text-tertiary align-middle">{{ beverage.price }}
+							€</td>
+						<td class="text-center align-middle">
+							<div class="d-flex justify-content-md-center flex-nowrap gap-3">
+								<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_beverage_edit', {'id': beverage.id }) }}">
+									{{ include('/components/svg/_icon_edit.svg.twig') }}
+									Éditer
+								</a>
+								{{ include('./admin/beverage/_delete_form.html.twig') }}
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">Aucune donnée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
