@@ -68,6 +68,8 @@ class AdminLiquidController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $liquid->getId(), $request->request->get('_token'))) {
             $entityManager->remove($liquid);
             $entityManager->flush();
+
+            $this->addFlash("success", "Votre liquide a été supprimé !");
         }
 
         return $this->redirectToRoute('app_admin_liquid_index', [], Response::HTTP_SEE_OTHER);

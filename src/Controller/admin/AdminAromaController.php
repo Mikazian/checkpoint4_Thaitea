@@ -47,14 +47,6 @@ class AdminAromaController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_aroma_show', methods: ['GET'])]
-    public function show(Aroma $aroma): Response
-    {
-        return $this->render('admin/aroma/show.html.twig', [
-            'aroma' => $aroma,
-        ]);
-    }
-
     #[Route('/{id}/modifier', name: 'app_admin_aroma_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Aroma $aroma, EntityManagerInterface $entityManager): Response
     {
@@ -81,6 +73,7 @@ class AdminAromaController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $aroma->getId(), $request->request->get('_token'))) {
             $entityManager->remove($aroma);
             $entityManager->flush();
+            $this->addFlash("success", "Votre arôme a été supprimé !");
         }
 
         return $this->redirectToRoute('app_admin_aroma_index', [], Response::HTTP_SEE_OTHER);
