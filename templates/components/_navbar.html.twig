@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<ul class="d-flex flex-fill justify-content-between list-unstyled m-0 text-tertiary">
 			<li class="nav-item ">
-				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="#">
+				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="{{ path('home_index') }}">
 					{% include 'components/svg/_icon_home.svg.twig' %}
 					Accueil
 				</a>
@@ -22,7 +22,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="#">
+				<a class="nav-link active d-flex flex-column justify-content-center align-items-center fw-bolder" aria-current="page" href="{{ path('admin_home') }}">
 					{% include 'components/svg/_icon_profile.svg.twig' %}
 					Compte
 				</a>

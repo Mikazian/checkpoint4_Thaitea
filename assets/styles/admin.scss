@@ -4,6 +4,21 @@ main {
     height: calc(100vh);
 }
 
+.admin-link-btn {
+    font-size: 2rem;
+    font-weight: bolder;
+    padding: 4rem 2rem;
+    border: 1px solid $primary;
+    border-radius: 10px;
+    transition: 0.2s ease-in;
+}
+
+.admin-link-btn:hover {
+    color: $light;
+    background-color: $secondary;
+    border: 1px solid $secondary;
+}
+
 input[type="checkbox"] {
     background-color: $secondary;
 }
