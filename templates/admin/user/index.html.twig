@@ -23,7 +23,7 @@
 			<tbody>
 				{% for user in users %}
 					<tr>
-						<td class="col-2 text-tertiary align-middle">{{ user.username }}</td>
+						<td class="col-2 text-tertiary align-middle">{{ user.username|capitalize }}</td>
 						<td class="col text-tertiary align-middle">{{ user.email }}</td>
 						<td class="col text-tertiary align-middle">
 							{% for role in user.roles %}

@@ -27,6 +27,16 @@ body {
     box-shadow: $shadow-top;
 }
 
+.icon-btn {
+    display: inline-block;
+    transform: translateY(-2px);
+}
+
+.btn:hover {
+    color: transparent;
+    background-color: transparent;
+}
+
 /** 
 * TITLE CARD
 **/
