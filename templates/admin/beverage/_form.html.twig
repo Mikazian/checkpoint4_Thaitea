@@ -29,10 +29,27 @@
 		{{ form_errors(form.aroma) }}
 	</div>
 </div>
-<div class="d-flex flex-column w-50">
-	{{ form_label(form.bubble) }}
-	{{ form_widget(form.bubble) }}
-	{{ form_errors(form.bubble) }}
+<div class="d-flex gap-4 mb-4">
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.bubble) }}
+		{{ form_widget(form.bubble) }}
+		{{ form_errors(form.bubble) }}
+	</div>
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.ingredient) }}
+		{{ form_widget(form.ingredient) }}
+		{{ form_errors(form.ingredient) }}
+	</div>
+</div>
+<div class="d-flex gap-2 mb-4">
+	{{ form_widget(form.is_new) }}
+	{{ form_label(form.is_new) }}
+	{{ form_errors(form.is_new) }}
+</div>
+<div class="d-flex gap-2">
+	{{ form_widget(form.image) }}
+	{{ form_label(form.image) }}
+	{{ form_errors(form.image) }}
 </div>
 <div class="d-flex justify-content-between mt-5 mb-2">
 	<a href="{{ path('app_admin_bubble_index') }}" class="btn btn-outline-primary border-2 rounded-pill text-tertiary fw-bolder">Retour vers la liste</a>

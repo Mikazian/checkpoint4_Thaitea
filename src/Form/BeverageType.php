@@ -2,16 +2,13 @@
 
 namespace App\Form;
 
-use App\Entity\User;
-use App\Entity\Aroma;
-use App\Entity\Bubble;
-use App\Entity\Liquid;
 use App\Entity\Beverage;
 use App\Entity\Ingredient;
 use App\Form\AromaAutocompleteField;
 use App\Form\LiquidAutocompleteField;
 use App\Form\CreatorAutocompleteField;
 use Symfony\Component\Form\AbstractType;
+use App\Form\IngredientAutocompleteField;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -47,11 +44,9 @@ class BeverageType extends AbstractType
             ->add('aroma', AromaAutocompleteField::class)
             ->add('bubble', BubbleAutocompleteField::class)
             ->add('ingredient', CollectionType::class, [
-                'entry_type' => EntityType::class,
-                'entry_options' => [
-                    'class' => Ingredient::class,
-                    'choice_label' => 'name',
-                ]
+                'entry_type' => IngredientAutocompleteField::class,
+                'by_reference' => false,
+                'label' => false,
             ]);
     }
 
