@@ -57,7 +57,6 @@ class AdminAromaController extends AbstractController
             $entityManager->flush();
             $this->addFlash("success", "Votre arôme a été modifié !");
 
-
             return $this->redirectToRoute('app_admin_aroma_index', [], Response::HTTP_SEE_OTHER);
         }
 
