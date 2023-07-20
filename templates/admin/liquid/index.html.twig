@@ -1,0 +1,83 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Admin - Liquide
+{% endblock %}
+
+{% block admin_content_title %}
+	Gestion des liquides
+{% endblock %}
+
+{% block admin_content %}
+	<div class="my-3">
+		<a href="{{ path('app_admin_liquid_new') }}" class="btn btn-primary rounded-pill text-tertiary fw-bolder">
+			<span class="icon-btn">
+				{% include 'components/svg/_icon_add.svg.twig' %}
+			</span>
+			Ajouter un nouveau liquide</a>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-primary table-striped table-hover">
+			<thead class="sticky-top">
+				<tr>
+					<th class="col-9 bg-primary text-tertiary align-middle custom-rounded">Nom</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for liquid in liquids %}
+					<tr>
+						<td class="col-9 text-tertiary align-middle">{{ liquid.name|capitalize }}</td>
+						<td class="text-center">
+							<div class="d-flex justify-content-md-center flex-nowrap gap-3">
+								<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_liquid_edit', {'id': liquid.id }) }}">
+									{{ include('/components/svg/_icon_edit.svg.twig') }}
+									Éditer
+								</a>
+								{{ include('./admin/liquid/_delete_form.html.twig') }}
+							</div>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="6">Aucune donnée</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+
+
+{# {% block body %}
+	<h1>Liquid index</h1>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for liquid in liquids %}
+				<tr>
+					<td>{{ liquid.id }}</td>
+					<td>{{ liquid.name }}</td>
+					<td>
+						<a href="{{ path('app_liquid_show', {'id': liquid.id}) }}">show</a>
+						<a href="{{ path('app_liquid_edit', {'id': liquid.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="3">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_liquid_new') }}">Create new</a>
+{% endblock %} #}
