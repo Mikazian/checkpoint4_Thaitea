@@ -48,36 +48,3 @@
 		</table>
 	</div>
 {% endblock %}
-
-
-{# {% block body %}
-	<h1>Liquid index</h1>
-
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Name</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for liquid in liquids %}
-				<tr>
-					<td>{{ liquid.id }}</td>
-					<td>{{ liquid.name }}</td>
-					<td>
-						<a href="{{ path('app_liquid_show', {'id': liquid.id}) }}">show</a>
-						<a href="{{ path('app_liquid_edit', {'id': liquid.id}) }}">edit</a>
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="3">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-
-	<a href="{{ path('app_liquid_new') }}">Create new</a>
-{% endblock %} #}

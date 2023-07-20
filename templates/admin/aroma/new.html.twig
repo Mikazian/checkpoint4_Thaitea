@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Aroma{% endblock %}
+
+{% block body %}
+    <h1>Create new Aroma</h1>
+
+    {{ include('admin_aroma/_form.html.twig') }}
+
+    <a href="{{ path('app_admin_aroma_index') }}">back to list</a>
+{% endblock %}
