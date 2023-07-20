@@ -1,0 +1,71 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Admin - Accueil
+{% endblock %}
+
+{% block admin_content_title %}
+	Administration
+{% endblock %}
+
+{% block admin_content %}
+	<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 my-5 d-flex row-gap-4">
+		<div class="col">
+			<a href="{{ path('app_admin_user_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Utilisateurs
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="#" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Commandes
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="{{ path('app_admin_beverage_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Bubbles Tea
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="{{ path('app_admin_liquid_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Liquides
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="{{ path('app_admin_aroma_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Arômes
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="{{ path('app_admin_ingredient_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Ingrédients
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="{{ path('app_admin_bubble_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Bubbles
+				</div>
+			</a>
+		</div>
+		<div class="col">
+			<a href="{{ path('app_admin_size_index')}}" class="text-tertiary text-decoration-none">
+				<div class="admin-link-btn d-flex align-items-center justify-content-center">
+					Volumes
+				</div>
+			</a>
+		</div>
+	</div>
+{% endblock %}
