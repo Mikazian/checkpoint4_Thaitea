@@ -16,14 +16,14 @@ class OrderItem
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'orderItems')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?order $order = null;
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Order $order = null;
 
     #[ORM\ManyToOne(inversedBy: 'orderItems')]
-    private ?beverage $beverage = null;
+    private ?Beverage $beverage = null;
 
     #[ORM\ManyToOne(inversedBy: 'orderItems')]
-    private ?size $size = null;
+    private ?Size $size = null;
 
     public function getId(): ?int
     {

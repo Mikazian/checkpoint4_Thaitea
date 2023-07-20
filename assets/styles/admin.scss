@@ -1,5 +1,9 @@
 @import "_variables.scss";
 
+main {
+    height: calc(100vh);
+}
+
 input[type="checkbox"] {
     background-color: $secondary;
 }
@@ -7,7 +11,7 @@ input[type="checkbox"] {
 input[type="checkbox"]:before,
 input[type="checkbox"]:checked:before,
 input[type="checkbox"]:checked:after {
-    background-color: white;
+    background-color: $light;
 }
 
 .custom-w {

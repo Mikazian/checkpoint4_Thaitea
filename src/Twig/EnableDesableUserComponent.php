@@ -4,7 +4,6 @@ namespace App\Twig;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
-use Symfony\UX\LiveComponent\Attribute\LiveArg;
 use Symfony\UX\LiveComponent\Attribute\LiveProp;
 use Symfony\UX\LiveComponent\DefaultActionTrait;
 use Symfony\UX\LiveComponent\Attribute\LiveAction;
