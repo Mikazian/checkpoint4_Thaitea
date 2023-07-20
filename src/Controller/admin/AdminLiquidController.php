@@ -51,7 +51,7 @@ class AdminLiquidController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-            $this->addFlash("success", "Votre liquide a été supprimé !");
+            $this->addFlash("success", "Votre liquide a été modifié !");
 
             return $this->redirectToRoute('app_admin_liquid_index', [], Response::HTTP_SEE_OTHER);
         }

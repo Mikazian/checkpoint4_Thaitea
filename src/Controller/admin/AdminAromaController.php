@@ -17,8 +17,12 @@ class AdminAromaController extends AbstractController
     #[Route('/', name: 'app_admin_aroma_index', methods: ['GET'])]
     public function index(AromaRepository $aromaRepository): Response
     {
+        $aromas = $aromaRepository->findBy([], [
+            'name' => 'ASC',
+        ]);
+
         return $this->render('admin/aroma/index.html.twig', [
-            'aromas' => $aromaRepository->findAll(),
+            'aromas' => $aromas,
         ]);
     }
 
@@ -32,6 +36,7 @@ class AdminAromaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($aroma);
             $entityManager->flush();
+            $this->addFlash("success", "Vous avez ajouter un nouveau arôme !");
 
             return $this->redirectToRoute('app_admin_aroma_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -58,6 +63,8 @@ class AdminAromaController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash("success", "Votre arôme a été modifié !");
+
 
             return $this->redirectToRoute('app_admin_aroma_index', [], Response::HTTP_SEE_OTHER);
         }

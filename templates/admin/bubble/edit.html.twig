@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Admin - Édition du bubble
+{% endblock %}
+
+{% block admin_content_title %}
+	Modifier le bubble
+{% endblock %}
+
+{% block admin_content %}
+	<div class="mt-3">
+		{{ include('admin/bubble/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+	</div>
+{% endblock %}
