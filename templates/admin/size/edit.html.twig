@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Admin - Édition d'une taille
+{% endblock %}
+
+{% block admin_content_title %}
+	Modifier la taille
+{% endblock %}
+
+{% block admin_content %}
+	<div class="mt-3">
+		{{ include('admin/size/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
+	</div>
+{% endblock %}

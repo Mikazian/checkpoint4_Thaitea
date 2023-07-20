@@ -17,8 +17,12 @@ class AdminLiquidController extends AbstractController
     #[Route('/', name: 'app_admin_liquid_index', methods: ['GET'])]
     public function index(LiquidRepository $liquidRepository): Response
     {
+        $liquids = $liquidRepository->findBy([], [
+            'name' => 'ASC',
+        ]);
+
         return $this->render('admin/liquid/index.html.twig', [
-            'liquids' => $liquidRepository->findAll(),
+            'liquids' => $liquids,
         ]);
     }
 

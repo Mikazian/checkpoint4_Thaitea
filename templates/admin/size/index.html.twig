@@ -2,40 +2,42 @@
 
 {% block title %}
 	{{ parent() }}
-	| Admin - Arôme
+	| Admin - Taille
 {% endblock %}
 
 {% block admin_content_title %}
-	Gestion des arômes
+	Gestion des tailles
 {% endblock %}
 
 {% block admin_content %}
 	<div class="my-3">
-		<a href="{{ path('app_admin_aroma_new') }}" class="btn btn-primary rounded-pill text-tertiary fw-bolder">
+		<a href="{{ path('app_admin_size_new') }}" class="btn btn-primary rounded-pill text-tertiary fw-bolder">
 			<span class="icon-btn">
 				{% include 'components/svg/_icon_add.svg.twig' %}
 			</span>
-			Ajouter un nouveau arôme</a>
+			Ajouter une nouvelle taille</a>
 	</div>
 
 	<div class="table-responsive">
 		<table class="table table-primary table-striped table-hover">
 			<thead class="sticky-top">
 				<tr>
-					<th class="col-9 bg-primary text-tertiary align-middle custom-rounded">Nom de l'arôme</th>
+					<th class="col-5 bg-primary text-tertiary align-middle">Volume</th>
+					<th class="col-4 bg-primary text-tertiary align-middle custom-rounded">Multiplicateur</th>
 				</tr>
 			</thead>
 			<tbody>
-				{% for aroma in aromas %}
+				{% for size in sizes %}
 					<tr>
-						<td class="col-9 text-tertiary align-middle">{{ aroma.name|capitalize }}</td>
+						<td class="col-5 text-tertiary align-middle">{{ size.volume }}</td>
+						<td class="col-4 text-tertiary align-middle">{{ size.multiplicator }}</td>
 						<td class="text-center">
 							<div class="d-flex justify-content-md-center flex-nowrap gap-3">
-								<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_aroma_edit', {'id': aroma.id }) }}">
+								<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_size_edit', {'id': size.id }) }}">
 									{{ include('/components/svg/_icon_edit.svg.twig') }}
 									Éditer
 								</a>
-								{{ include('./admin/aroma/_delete_form.html.twig') }}
+								{{ include('./admin/size/_delete_form.html.twig') }}
 							</div>
 						</td>
 					</tr>

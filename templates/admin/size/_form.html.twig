@@ -1,0 +1,18 @@
+{{ form_start(form) }}
+<div class="d-flex gap-4">
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.volume) }}
+		{{ form_widget(form.volume) }}
+		{{ form_errors(form.volume) }}
+	</div>
+	<div class="d-flex flex-column w-50">
+		{{ form_label(form.multiplicator) }}
+		{{ form_widget(form.multiplicator) }}
+		{{ form_errors(form.multiplicator) }}
+	</div>
+</div>
+<div class="d-flex justify-content-between mt-5 mb-2">
+	<a href="{{ path('app_admin_bubble_index') }}" class="btn btn-outline-primary border-2 rounded-pill text-tertiary fw-bolder">Retour vers la liste</a>
+	<button class="btn btn-primary rounded-pill text-tertiary fw-bolder">{{ button_label|default('Sauvegarder') }}</button>
+</div>
+{{ form_end(form) }}
