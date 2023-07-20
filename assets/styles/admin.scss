@@ -1,0 +1,19 @@
+@import "_variables.scss";
+
+input[type="checkbox"] {
+    background-color: $secondary;
+}
+
+input[type="checkbox"]:before,
+input[type="checkbox"]:checked:before,
+input[type="checkbox"]:checked:after {
+    background-color: white;
+}
+
+.custom-w {
+    min-width: 150px;
+}
+
+.custom-rounded {
+    border-radius: 0 8px 0 0;
+}

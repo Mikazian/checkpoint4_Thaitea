@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('admin') }}
+{% endblock %}
+
+{% block navbar %}
+	{% include 'components/_navbar.html.twig' %}
+{% endblock %}
+
+{% block body %}
+	<main class="container-fluid">
+		<div class="bg-light rounded p-3">
+
+			<h1 class="text-tertiary fs-3 fw-bolder">
+				{% block admin_content_title %}{% endblock %}
+			</h1>
+
+			{% block admin_content %}{% endblock %}
+
+		</div>
+	</main>
+{% endblock %}
+
+{% block footer %}
+	{% include 'components/_footer.html.twig' %}
+{% endblock %}
