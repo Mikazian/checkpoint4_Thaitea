@@ -40,7 +40,7 @@ class Beverage
     #[ORM\ManyToOne(inversedBy: 'beverages')]
     private ?Bubble $bubble = null;
 
-    #[ORM\ManyToMany(targetEntity: ingredient::class, inversedBy: 'beverages')]
+    #[ORM\ManyToMany(targetEntity: Ingredient::class, inversedBy: 'beverages')]
     private Collection $ingredient;
 
     #[ORM\OneToMany(mappedBy: 'beverage', targetEntity: OrderItem::class)]

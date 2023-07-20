@@ -43,10 +43,11 @@ class BeverageType extends AbstractType
             ->add('liquid', LiquidAutocompleteField::class)
             ->add('aroma', AromaAutocompleteField::class)
             ->add('bubble', BubbleAutocompleteField::class)
-            ->add('ingredient', CollectionType::class, [
-                'entry_type' => IngredientAutocompleteField::class,
-                'by_reference' => false,
-                'label' => false,
+            ->add('ingredient', EntityType::class, [
+                'class' => Ingredient::class,
+                'choice_label' => 'name',
+                'multiple' => true,
+                'autocomplete' => true,
             ]);
     }
 

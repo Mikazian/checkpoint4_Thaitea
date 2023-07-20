@@ -43,3 +43,36 @@ input[type="checkbox"]:checked:after {
 .ts-wrapper.single.input-active .ts-control {
     background: transparent;
 }
+
+.ts-control {
+    border: none;
+    border-bottom: 2px solid $primary;
+    height: 33px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.ts-wrapper.multi .ts-control [data-value] {
+    background-image: none;
+    background-color: $primary;
+    text-shadow: none;
+    color: $tertiary;
+    font-size: 1rem;
+}
+
+.ts-wrapper.multi .ts-control > div {
+    border: none;
+}
+
+.focus .ts-control {
+    box-shadow: none;
+}
+
+.admin-bbt-show-img {
+    width: 40vw;
+    height: 40vw;
+    min-width: 250px;
+    min-height: 250px;
+    margin: auto;
+    border: 1px solid red;
+}

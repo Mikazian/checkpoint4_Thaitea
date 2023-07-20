@@ -51,7 +51,7 @@
 						<td class="col text-tertiary align-middle">{{ beverage.bubble.name|capitalize }}</td>
 						<td class="col text-tertiary align-middle">
 							{% for ingredient in beverage.ingredient %}
-								{{ ingredient.name|capitalize }}
+								{{ ingredient.name|capitalize }},
 							{% endfor %}
 						</td>
 						<td class="col text-tertiary align-middle">{{ beverage.price }}

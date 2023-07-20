@@ -1,38 +1,69 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block title %}Beverage{% endblock %}
+{% block title %}
+	{{ parent() }}
+	| Admin - Bubble Tea
+{% endblock %}
 
-{% block body %}
-    <h1>Beverage</h1>
+{% block admin_content_title %}
+	Bubble Tea
+{% endblock %}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ beverage.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ beverage.name }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ beverage.price }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ beverage.image }}</td>
-            </tr>
-            <tr>
-                <th>Is_new</th>
-                <td>{{ beverage.isNew ? 'Yes' : 'No' }}</td>
-            </tr>
-        </tbody>
-    </table>
+{% block admin_content %}
+	<div class="admin-bbt-show-img my-4">
+		<img src="" alt="Photo du Bubble Tea">
+	</div>
+	<div class="d-flex gap-3 justify-content-end">
+		<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_beverage_edit', {'id': beverage.id }) }}">
+			{{ include('/components/svg/_icon_edit.svg.twig') }}
+			Éditer
+		</a>
+		{{ include('admin/beverage/_delete_form.html.twig') }}
+	</div>
+	<div class="table-responsive">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th class="bg-transparent text-tertiary">Nom du Bubble Tea</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.name|capitalize }}</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Créateur</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.creator.username|capitalize }}</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Price</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.price }}
+						€
+					</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Liquide</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.liquid.name|capitalize }}</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Arôme</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.aroma.name|capitalize }}</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Bubbles</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.bubble.name|capitalize }}</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Ingrédient</th>
+					<td class="bg-transparent text-tertiary">
+						{% for ingredient in beverage.ingredient %}
+							{{ ingredient.name|capitalize }},
+						{% endfor %}
+					</td>
+				</tr>
+				<tr>
+					<th class="bg-transparent text-tertiary">Nouveauté</th>
+					<td class="bg-transparent text-tertiary">{{ beverage.isNew ? 'Oui' : 'Non' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 
-    <a href="{{ path('app_admin_beverage_index') }}">back to list</a>
-
-    <a href="{{ path('app_admin_beverage_edit', {'id': beverage.id}) }}">edit</a>
-
-    {{ include('admin_beverage/_delete_form.html.twig') }}
+	<a href="{{ path('app_admin_beverage_index') }}" class="btn btn-primary rounded-pill text-tertiary fw-bolder mt-4 mb-2">Retour à la liste</a>
 {% endblock %}
