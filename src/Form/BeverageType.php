@@ -8,6 +8,9 @@ use App\Entity\Bubble;
 use App\Entity\Liquid;
 use App\Entity\Beverage;
 use App\Entity\Ingredient;
+use App\Form\AromaAutocompleteField;
+use App\Form\LiquidAutocompleteField;
+use App\Form\CreatorAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -39,26 +42,10 @@ class BeverageType extends AbstractType
                 'label' => 'Nouveauté ?',
                 'required' => false,
             ])
-            ->add('creator', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'username',
-                'by_reference' => true,
-            ])
-            ->add('liquid', EntityType::class, [
-                'class' => Liquid::class,
-                'choice_label' => 'name',
-                'by_reference' => true,
-            ])
-            ->add('aroma', EntityType::class, [
-                'class' => Aroma::class,
-                'choice_label' => 'name',
-                'by_reference' => true,
-            ])
-            ->add('bubble', EntityType::class, [
-                'class' => Bubble::class,
-                'choice_label' => 'name',
-                'by_reference' => true,
-            ])
+            ->add('creator', CreatorAutocompleteField::class)
+            ->add('liquid', LiquidAutocompleteField::class)
+            ->add('aroma', AromaAutocompleteField::class)
+            ->add('bubble', BubbleAutocompleteField::class)
             ->add('ingredient', CollectionType::class, [
                 'entry_type' => EntityType::class,
                 'entry_options' => [

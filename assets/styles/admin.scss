@@ -27,3 +27,19 @@ input[type="checkbox"]:checked:after {
     width: 40px;
     height: 40px;
 }
+
+.ts-wrapper.single .ts-control {
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    border-bottom: 2px solid $primary;
+    box-shadow: none;
+    font-size: 1rem;
+    padding-left: 0;
+    height: 33px;
+}
+
+.ts-control,
+.ts-wrapper.single.input-active .ts-control {
+    background: transparent;
+}
