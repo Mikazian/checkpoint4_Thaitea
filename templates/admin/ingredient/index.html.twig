@@ -29,7 +29,7 @@
 				{% for ingredient in ingredients %}
 					<tr>
 						<td class="col-9 text-tertiary align-middle">{{ ingredient.name|capitalize }}</td>
-						<td class="text-center">
+						<td class="text-center align-middle">
 							<div class="d-flex justify-content-md-center flex-nowrap gap-3">
 								<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_ingredient_edit', {'id': ingredient.id }) }}">
 									{{ include('/components/svg/_icon_edit.svg.twig') }}

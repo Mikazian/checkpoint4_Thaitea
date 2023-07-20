@@ -9,6 +9,7 @@ use App\Form\LiquidAutocompleteField;
 use App\Form\CreatorAutocompleteField;
 use Symfony\Component\Form\AbstractType;
 use App\Form\IngredientAutocompleteField;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,8 +33,17 @@ class BeverageType extends AbstractType
                     'class' => 'w-100 bg-transparent border-1 border-2 border-primary border-start-0 border-top-0 border-end-0 custom-input',
                 ],
             ])
-            ->add('image', TextType::class, [
+            ->add('imageFile', VichFileType::class, [
                 'required' => false,
+                'allow_delete'  => true,
+                'delete_label' => 'Supprimer l\'image',
+                'download_uri' => true,
+                'attr' => [
+                    'class' => 'mt-4',
+                ],
+                'label_attr' => [
+                    'class' => 'd-none',
+                ],
             ])
             ->add('is_new', CheckboxType::class, [
                 'label' => 'Nouveauté ?',

@@ -11,7 +11,7 @@
 
 {% block admin_content %}
 	<div class="admin-bbt-show-img my-4">
-		<img src="" alt="Photo du Bubble Tea">
+		<img src="{{ vich_uploader_asset(beverage) }}" alt="{{ beverage.name }}" class="object-fit-cover border rounded w-100 h-100">
 	</div>
 	<div class="d-flex gap-3 justify-content-end">
 		<a class="icon-link link-tertiary mx-2 text-decoration-none" href="{{ path('app_admin_beverage_edit', {'id': beverage.id }) }}">

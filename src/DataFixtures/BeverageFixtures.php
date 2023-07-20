@@ -26,7 +26,7 @@ class BeverageFixtures extends Fixture implements DependentFixtureInterface
             $beverage->setName($faker->word());
             $beverage->setPrice($faker->randomElement(self::PRICE));
 
-            $beverage->setCreatorId($this->getReference('admin'));
+            $beverage->setCreator($this->getReference('admin'));
 
             // Aroma
             $numberAromas = count(AromaFixtures::AROMAS);

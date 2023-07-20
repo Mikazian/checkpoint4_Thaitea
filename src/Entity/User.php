@@ -97,7 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->beverages->contains($beverage)) {
             $this->beverages->add($beverage);
-            $beverage->setCreatorId($this);
+            $beverage->setCreator($this);
         }
 
         return $this;
@@ -107,8 +107,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if ($this->beverages->removeElement($beverage)) {
             // set the owning side to null (unless already changed)
-            if ($beverage->getCreatorId() === $this) {
-                $beverage->setCreatorId(null);
+            if ($beverage->getCreator() === $this) {
+                $beverage->setCreator(null);
             }
         }
 
