@@ -47,14 +47,6 @@ class AdminBubbleController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_bubble_show', methods: ['GET'])]
-    public function show(Bubble $bubble): Response
-    {
-        return $this->render('admin/bubble/show.html.twig', [
-            'bubble' => $bubble,
-        ]);
-    }
-
     #[Route('/{id}/modifier', name: 'app_admin_bubble_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Bubble $bubble, EntityManagerInterface $entityManager): Response
     {
@@ -81,6 +73,8 @@ class AdminBubbleController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $bubble->getId(), $request->request->get('_token'))) {
             $entityManager->remove($bubble);
             $entityManager->flush();
+
+            $this->addFlash("success", "Votre bubble a été supprimé !");
         }
 
         return $this->redirectToRoute('app_admin_bubble_index', [], Response::HTTP_SEE_OTHER);
