@@ -1,0 +1,49 @@
+{% extends 'visitor.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	| Catégories
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('category') }}
+{% endblock %}
+
+{% block body %}
+	<main class="container-fluid container-lg mt-5">
+		<div class="position-relative mb-4">
+			<div class="position-relative z-2 ms-4">
+				<h3 class="title-page">Milk Tea</h3>
+				<span class="title-upper">Milk Tea</span>
+			</div>
+			{% include 'components/svg/_icon_sun.svg.twig' %}
+		</div>
+		<div class="row row-cols-1 row-cols-md-2 mt-5">
+			{% for beverage in beverages %}
+				<div class="col mb-3">
+					<div class="custom-card rounded shadow-bottom">
+						<div class="position-absolute top-0 start-0 z-3">
+							<div class="p-4">
+								<h3 class="text-tertiary fw-bolder">{{ beverage.name|capitalize }}</h3>
+								<ul class="list-unstyled text-tertiary">
+									<li>{{ beverage.liquid.name }}</li>
+									<li>{{ beverage.aroma.name }}</li>
+									<li>{{ beverage.bubble.name }}</li>
+									{% for ingredient in beverage.ingredient %}
+										<li class="">{{ ingredient.name }}</li>
+									{% endfor %}
+									<ul></div>
+								</div>
+								<div class="position-absolute h-100 w-100 z-2">
+									<img src="{{ asset('build/images/card/card-base.png') }}" alt="template carte" class="object-fit-cover pe-5 w-100 h-100">
+								</div>
+								<div class="custom-container-img z-1">
+									<img src="{{ asset('build/images/placeholder/coco-milk.webp') }}" alt="template carte" class="bubbletea-img object-fit-cover w-100 h-100">
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</main>
+		{% endblock %}
