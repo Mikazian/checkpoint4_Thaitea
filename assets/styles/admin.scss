@@ -1,7 +1,8 @@
 @import "_variables.scss";
 
-main {
-    height: calc(100vh);
+body {
+    padding-top: $nav-height;
+    min-height: 100vh;
 }
 
 .admin-link-btn {
